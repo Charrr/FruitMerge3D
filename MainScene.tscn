@@ -1,0 +1,62 @@
+[gd_scene load_steps=10 format=3 uid="uid://oe4xvil58t68"]
+
+[ext_resource type="Script" path="res://Scripts/Fruit.cs" id="1_p856g"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ifwwj"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_av7be"]
+sky_material = SubResource("ProceduralSkyMaterial_ifwwj")
+
+[sub_resource type="Environment" id="Environment_5g0rp"]
+background_mode = 2
+sky = SubResource("Sky_av7be")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_u1xre"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8xurp"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_2vwfd"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_1qj2d"]
+size = Vector2(5, 5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hsavm"]
+size = Vector3(5, 0.1, 5)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_5g0rp")
+
+[node name="--- WORLD ---" type="Node" parent="."]
+
+[node name="Sphere" type="MeshInstance3D" parent="--- WORLD ---"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.64401, 0.945544, 0)
+mesh = SubResource("SphereMesh_u1xre")
+skeleton = NodePath("../Ground/Plane")
+script = ExtResource("1_p856g")
+
+[node name="Cube" type="RigidBody3D" parent="--- WORLD ---"]
+transform = Transform3D(0.925243, 0.0872947, -0.369196, -0.312512, 0.727112, -0.611265, 0.215087, 0.680946, 0.700035, 0, 2.09858, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="--- WORLD ---/Cube"]
+shape = SubResource("BoxShape3D_8xurp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="--- WORLD ---/Cube"]
+mesh = SubResource("BoxMesh_2vwfd")
+
+[node name="Ground" type="StaticBody3D" parent="--- WORLD ---"]
+
+[node name="Plane" type="MeshInstance3D" parent="--- WORLD ---/Ground"]
+mesh = SubResource("PlaneMesh_1qj2d")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="--- WORLD ---/Ground"]
+shape = SubResource("BoxShape3D_hsavm")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.749987, 5)
