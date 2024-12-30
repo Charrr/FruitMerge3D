@@ -3,7 +3,7 @@ using UnityEngine;
 namespace CharlieCares.FruitMerge
 {
     [CreateAssetMenu(fileName = "FruitConfig", menuName = "Scriptable Objects/FruitConfig")]
-    public class FruitData : ScriptableObject
+    public class FruitConfig : ScriptableObject
     {
         [SerializeField] private string _name;
         [SerializeField, Range(0.01f, 10f)] private float _scale = 1f;
