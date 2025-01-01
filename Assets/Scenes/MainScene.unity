@@ -384,9 +384,9 @@ MonoBehaviour:
   _fruitPrefab: {fileID: 1645548061407318032, guid: b214733dae24a4715a9260157735198a, type: 3}
   _spawnRoot: {fileID: 383965135}
   _fruitConfigs:
-  - {fileID: 11400000, guid: 506375d8b6f2b4c4dab7854047672f17, type: 2}
   - {fileID: 11400000, guid: d73b232c70d7a4cbe81d4b2de611e4bf, type: 2}
   - {fileID: 11400000, guid: 96d4fdb9074944cdf9f3256722326f79, type: 2}
+  - {fileID: 11400000, guid: 506375d8b6f2b4c4dab7854047672f17, type: 2}
 --- !u!1 &277940681
 GameObject:
   m_ObjectHideFlags: 0
