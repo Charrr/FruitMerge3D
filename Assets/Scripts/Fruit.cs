@@ -11,7 +11,6 @@ namespace CharlieCares.FruitMerge
 
         public void SetConfig(FruitConfig config)
         {
-            transform.localScale = config.Scale * Vector3.one;
             name = config.Name + GetInstanceID();
             _config = config;
         }
@@ -33,4 +32,3 @@ namespace CharlieCares.FruitMerge
         }
     }
 }
-

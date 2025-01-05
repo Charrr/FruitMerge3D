@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Peach
   m_EditorClassIdentifier: 
   _name: Peach
-  _scale: 2
+  _prefab: {fileID: 3877580092050827127, guid: a336b71198bd26041b2f8868199f2ac3, type: 3}

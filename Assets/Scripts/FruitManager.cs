@@ -5,9 +5,7 @@ namespace CharlieCares.FruitMerge
 {
     public class FruitManager : MonoBehaviour
     {
-        [SerializeField] private Fruit _fruitPrefab;
         [SerializeField] private Transform _spawnRoot;
-
         [SerializeField] private List<FruitConfig> _fruitConfigs;
 
         private void Update()
@@ -20,7 +18,13 @@ namespace CharlieCares.FruitMerge
 
         public void SpawnFruit(FruitConfig config, Vector3 spawnPos)
         {
-            Fruit fruit = Instantiate(_fruitPrefab, _spawnRoot);
+            if (config.Prefab == null)
+            {
+                Debug.LogError($"Fruit {config} does not have a prefab, please assgin one to its config.");
+                return;
+            }
+
+            Fruit fruit = Instantiate(config.Prefab, _spawnRoot);
             fruit.transform.position = spawnPos;
             fruit.SetConfig(config);
             fruit.OnCollidedWithFruit += HandleFruitCollision;
