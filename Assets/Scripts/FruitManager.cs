@@ -7,6 +7,7 @@ namespace CharlieCares.FruitMerge
     {
         [SerializeField] private Transform _spawnRoot;
         [SerializeField] private List<FruitConfig> _fruitConfigs;
+        [SerializeField] private TopViewController _topViewMap;
 
         private void Update()
         {
@@ -14,6 +15,16 @@ namespace CharlieCares.FruitMerge
             {
                 SpawnFruitRandomly();
             }
+        }
+
+        private void Start()
+        {
+            _topViewMap.OnClickOnMap += SpawnRandomFruitAtPosition;
+        }
+
+        private void OnDestroy()
+        {
+            _topViewMap.OnClickOnMap -= SpawnRandomFruitAtPosition;
         }
 
         public void SpawnFruit(FruitConfig config, Vector3 spawnPos)
@@ -44,6 +55,14 @@ namespace CharlieCares.FruitMerge
         public void SpawnFruitRandomly()
         {
             Vector3 spawnPos = new Vector3(Random.Range(-4f, 4f), 6f, Random.Range(-4f, 4f));
+            SpawnFruit(_fruitConfigs[Random.Range(0, _fruitConfigs.Count)], spawnPos);
+        }
+
+        private void SpawnRandomFruitAtPosition(Vector2 posNormalized)
+        {
+            float width = 10f;
+            float height = 10f;
+            Vector3 spawnPos = new Vector3(width * posNormalized.x, 6f, height * posNormalized.y);
             SpawnFruit(_fruitConfigs[Random.Range(0, _fruitConfigs.Count)], spawnPos);
         }
 
