@@ -35,7 +35,7 @@ namespace CharlieCares.FruitMerge
             _topViewMap.OnClickOnMap -= HandleClickOnTopViewMap;
         }
 
-        public Fruit SpawnFruit(FruitConfig config, Vector3 spawnPos = default)
+        public Fruit SpawnFruit(FruitConfig config, Vector3 spawnPos = default, bool preview = false)
         {
             if (config.Prefab == null)
             {
@@ -44,14 +44,14 @@ namespace CharlieCares.FruitMerge
             }
 
             Fruit fruit = Instantiate(config.Prefab, _spawnRoot);
-            fruit.IsUnderPreview = true;
+            fruit.IsUnderPreview = preview;
             fruit.transform.position = spawnPos;
             fruit.SetConfig(config);
             fruit.OnCollidedWithFruit += HandleFruitCollision;
             return fruit;
         }
 
-        public Fruit SpawnFruit(string fruitName, Vector3 spawnPos = default)
+        public Fruit SpawnFruit(string fruitName, Vector3 spawnPos = default, bool preview = false)
         {
             FruitConfig chosenFruit = _fruitConfigs.Find(fc => fc.name == fruitName);
             if (chosenFruit == null)
@@ -59,12 +59,12 @@ namespace CharlieCares.FruitMerge
                 Debug.LogError($"Fruit type {fruitName} cannot be found.");
                 return null;
             }
-            return SpawnFruit(chosenFruit, spawnPos);
+            return SpawnFruit(chosenFruit, spawnPos, preview);
         }
 
         public Fruit SpawnRandomFruit()
         {
-            return SpawnFruit(_fruitConfigs[Random.Range(0, _fruitConfigs.Count)]);
+            return SpawnFruit(_fruitConfigs[Random.Range(0, _fruitConfigs.Count)], preview: true);
         }
 
         private void HandleClickOnTopViewMap(Vector2 posNormalized)
