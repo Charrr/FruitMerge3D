@@ -161,14 +161,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnRoot: {fileID: 0}
-  _fruitConfigs:
-  - {fileID: 11400000, guid: d73b232c70d7a4cbe81d4b2de611e4bf, type: 2}
-  - {fileID: 11400000, guid: b0278dafac2ee6e4286d2654e1ebbf02, type: 2}
-  - {fileID: 11400000, guid: b3d7a414554895846b22d5e2824a4c86, type: 2}
-  - {fileID: 11400000, guid: b6d4a80871c551741bcf38f74fe08629, type: 2}
-  - {fileID: 11400000, guid: 96d4fdb9074944cdf9f3256722326f79, type: 2}
-  - {fileID: 11400000, guid: 5f26d3d1accceb74ba49c4e01dca182a, type: 2}
-  - {fileID: 11400000, guid: 506375d8b6f2b4c4dab7854047672f17, type: 2}
+  _mergeConfig: {fileID: 11400000, guid: 695cf845e845742f4a13c9c3a67b7e7d, type: 2}
   _topViewMap: {fileID: 0}
 --- !u!1 &7906792265675232641
 GameObject:

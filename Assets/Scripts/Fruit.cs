@@ -6,13 +6,12 @@ namespace CharlieCares.FruitMerge
     public class Fruit : MonoBehaviour
     {
         private FruitConfig _config;
-        public FruitConfig Config => _config;
         private Rigidbody _rb;
-
         private bool _isUnderPreview = true;
 
         public event Action<Fruit, Fruit> OnCollidedWithFruit;
 
+        public FruitConfig Config => _config;
         public bool IsUnderPreview
         {
             get => _isUnderPreview;
