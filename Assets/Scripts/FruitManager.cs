@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using CharlieCares.ScoreSystem;
 using UnityEngine;
 
 namespace CharlieCares.FruitMerge
@@ -85,6 +86,7 @@ namespace CharlieCares.FruitMerge
         {
             FruitConfig newFruitType = _mergeConfig.GetNextFruitConfigInOrder(fruitA.Config);
             Vector3 spawnPos = (fruitA.transform.position + fruitB.transform.position) / 2;
+            ScoreManager.AddScore(fruitA.Config.MergeScore);
             Destroy(fruitA.gameObject);
             Destroy(fruitB.gameObject);
             SpawnFruit(newFruitType, spawnPos);

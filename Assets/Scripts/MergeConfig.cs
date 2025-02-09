@@ -13,6 +13,20 @@ namespace CharlieCares.FruitMerge
 
         public int FruitConfigCount => _fruitConfigs.Count;
 
+        private void OnValidate()
+        {
+            InitMergeScores();
+        }
+
+        public void InitMergeScores()
+        {
+            for (int i = 0; i < FruitConfigCount; i++)
+            {
+                _fruitConfigs[i].MergeScore = i + 1;
+                Debug.Log($"{_fruitConfigs[i].Name} has been assigned MergeScore of {i + 1}.");
+            }
+        }
+
         public FruitConfig GetFruitConfigByIndex(int index)
         {
             if (index >= FruitConfigCount)
