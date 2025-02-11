@@ -36,7 +36,7 @@ namespace CharlieCares.FruitMerge
             _topViewMap.OnClickOnMap -= HandleClickOnTopViewMap;
         }
 
-        public Fruit SpawnFruit(FruitConfig config, Vector3 spawnPos = default, bool preview = false)
+        public Fruit SpawnFruit(FruitConfig config, Vector3 spawnPos = default, Quaternion spawnRot = default, bool preview = false)
         {
             if (config.Prefab == null)
             {
@@ -46,13 +46,13 @@ namespace CharlieCares.FruitMerge
 
             Fruit fruit = Instantiate(config.Prefab, _spawnRoot);
             fruit.IsUnderPreview = preview;
-            fruit.transform.position = spawnPos;
+            fruit.transform.SetPositionAndRotation(spawnPos, spawnRot);
             fruit.SetConfig(config);
             fruit.OnCollidedWithFruit += HandleFruitCollision;
             return fruit;
         }
 
-        public Fruit SpawnFruit(string fruitName, Vector3 spawnPos = default, bool preview = false)
+        public Fruit SpawnFruit(string fruitName, Vector3 spawnPos = default, Quaternion spawnRot = default, bool preview = false)
         {
             FruitConfig chosenFruit = _mergeConfig.GetFruitConfigByName(fruitName);
             if (chosenFruit == null)
@@ -60,7 +60,7 @@ namespace CharlieCares.FruitMerge
                 Debug.LogError($"Fruit type {fruitName} cannot be found.", this);
                 return null;
             }
-            return SpawnFruit(chosenFruit, spawnPos, preview);
+            return SpawnFruit(chosenFruit, spawnPos, spawnRot, preview);
         }
 
         public Fruit SpawnRandomFruit()
@@ -86,10 +86,11 @@ namespace CharlieCares.FruitMerge
         {
             FruitConfig newFruitType = _mergeConfig.GetNextFruitConfigInOrder(fruitA.Config);
             Vector3 spawnPos = (fruitA.transform.position + fruitB.transform.position) / 2;
+            Quaternion spawnRot = Quaternion.LookRotation(fruitA.transform.position - fruitB.transform.position);
             ScoreManager.AddScore(fruitA.Config.MergeScore);
             Destroy(fruitA.gameObject);
             Destroy(fruitB.gameObject);
-            SpawnFruit(newFruitType, spawnPos);
+            SpawnFruit(newFruitType, spawnPos, spawnRot);
         }
     }
 }
