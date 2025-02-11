@@ -8,6 +8,7 @@ namespace CharlieCares.FruitMerge
         private FruitConfig _config;
         private Rigidbody _rb;
         private bool _isUnderPreview = true;
+        private PreviewFruit _previewBehaviour;
 
         public event Action<Fruit, Fruit> OnCollidedWithFruit;
 
@@ -20,6 +21,16 @@ namespace CharlieCares.FruitMerge
                 _isUnderPreview = value;
                 _rb.detectCollisions = !value;
                 _rb.useGravity = !value;
+                if (value)
+                {
+                    if (!TryGetComponent(out _previewBehaviour))
+                        _previewBehaviour = gameObject.AddComponent<PreviewFruit>();
+                }
+                else
+                {
+                    if (_previewBehaviour)
+                        Destroy(_previewBehaviour);
+                }
             }
         }
 
