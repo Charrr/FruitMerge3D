@@ -9,5 +9,6 @@ namespace CharlieCares.FruitMerge
         [SerializeField] private Fruit _prefab;
         public string Name => _name;
         public Fruit Prefab => _prefab;
+        public int MergeScore { get; set; }
     }
 }

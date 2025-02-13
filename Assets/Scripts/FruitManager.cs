@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using CharlieCares.ScoreSystem;
 using UnityEngine;
 
 namespace CharlieCares.FruitMerge
@@ -6,7 +7,7 @@ namespace CharlieCares.FruitMerge
     public class FruitManager : MonoBehaviour
     {
         [SerializeField] private Transform _spawnRoot;
-        [SerializeField] private List<FruitConfig> _fruitConfigs;
+        [SerializeField] private MergeConfig _mergeConfig;
         [SerializeField] private TopViewController _topViewMap;
 
         private Fruit _previewFruit;
@@ -35,7 +36,7 @@ namespace CharlieCares.FruitMerge
             _topViewMap.OnClickOnMap -= HandleClickOnTopViewMap;
         }
 
-        public Fruit SpawnFruit(FruitConfig config, Vector3 spawnPos = default, bool preview = false)
+        public Fruit SpawnFruit(FruitConfig config, Vector3 spawnPos = default, Quaternion spawnRot = default, bool preview = false)
         {
             if (config.Prefab == null)
             {
@@ -45,26 +46,26 @@ namespace CharlieCares.FruitMerge
 
             Fruit fruit = Instantiate(config.Prefab, _spawnRoot);
             fruit.IsUnderPreview = preview;
-            fruit.transform.position = spawnPos;
+            fruit.transform.SetPositionAndRotation(spawnPos, spawnRot);
             fruit.SetConfig(config);
             fruit.OnCollidedWithFruit += HandleFruitCollision;
             return fruit;
         }
 
-        public Fruit SpawnFruit(string fruitName, Vector3 spawnPos = default, bool preview = false)
+        public Fruit SpawnFruit(string fruitName, Vector3 spawnPos = default, Quaternion spawnRot = default, bool preview = false)
         {
-            FruitConfig chosenFruit = _fruitConfigs.Find(fc => fc.name == fruitName);
+            FruitConfig chosenFruit = _mergeConfig.GetFruitConfigByName(fruitName);
             if (chosenFruit == null)
             {
-                Debug.LogError($"Fruit type {fruitName} cannot be found.");
+                Debug.LogError($"Fruit type {fruitName} cannot be found.", this);
                 return null;
             }
-            return SpawnFruit(chosenFruit, spawnPos, preview);
+            return SpawnFruit(chosenFruit, spawnPos, spawnRot, preview);
         }
 
         public Fruit SpawnRandomFruit()
         {
-            return SpawnFruit(_fruitConfigs[Random.Range(0, _fruitConfigs.Count)], preview: true);
+            return SpawnFruit(_mergeConfig.GetRandomFruitConfig(), preview: true);
         }
 
         private void HandleClickOnTopViewMap(Vector2 posNormalized)
@@ -83,16 +84,13 @@ namespace CharlieCares.FruitMerge
 
         private void HandleFruitCollision(Fruit fruitA, Fruit fruitB)
         {
-            int configIndex = _fruitConfigs.IndexOf(fruitA.Config);
-            if (configIndex < 0)
-            {
-                Debug.LogError($"Fruit type {fruitA.Config.name} is not registered.", fruitA);
-            }
-            FruitConfig newFruitType = _fruitConfigs[Mathf.Clamp(configIndex + 1, 0, _fruitConfigs.Count - 1)];
+            FruitConfig newFruitType = _mergeConfig.GetNextFruitConfigInOrder(fruitA.Config);
             Vector3 spawnPos = (fruitA.transform.position + fruitB.transform.position) / 2;
+            Quaternion spawnRot = Quaternion.LookRotation(fruitA.transform.position - fruitB.transform.position);
+            ScoreManager.AddScore(fruitA.Config.MergeScore);
             Destroy(fruitA.gameObject);
             Destroy(fruitB.gameObject);
-            SpawnFruit(newFruitType, spawnPos);
+            SpawnFruit(newFruitType, spawnPos, spawnRot);
         }
     }
 }

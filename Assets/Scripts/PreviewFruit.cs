@@ -4,7 +4,7 @@ namespace CharlieCares.FruitMerge
 {
     public class PreviewFruit : MonoBehaviour
     {
-        [SerializeField] private Vector3 _rotationDelta = Vector3.one;
+        [SerializeField] private Vector3 _rotationDelta = Vector3.one * 0.3f;
 
         private void Update()
         {
