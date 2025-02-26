@@ -46,6 +46,7 @@ GameObject:
   m_Component:
   - component: {fileID: 36204547943179705}
   - component: {fileID: 8431482275824294652}
+  - component: {fileID: 6657006983286808091}
   m_Layer: 0
   m_Name: InteractionManager
   m_TagString: Untagged
@@ -85,6 +86,25 @@ MonoBehaviour:
   _minDistance: 6
   _maxDistance: 20
   _originReference: {fileID: 0}
+--- !u!114 &6657006983286808091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5003635022469900672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efad50ffa5a8c4f6cb526a95c73cc7d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _dragAction: {fileID: -817888601876664972, guid: 9be61bd3158f44bf09fb758c0b2876c2, type: 3}
+  _primaryFingerPosAction: {fileID: 264147883436535409, guid: 9be61bd3158f44bf09fb758c0b2876c2, type: 3}
+  _secondaryFingerPosAction: {fileID: 9059384505072407066, guid: 9be61bd3158f44bf09fb758c0b2876c2, type: 3}
+  _rotateFactor: {x: 5, y: 5}
+  DebugDragValue: {x: 0, y: 0}
+  DebugFingerPos0: {x: 0, y: 0}
+  DebugFingerPos1: {x: 0, y: 0}
 --- !u!1 &7097223266064584612
 GameObject:
   m_ObjectHideFlags: 0
@@ -353,7 +373,7 @@ Camera:
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
-    y: 0
+    y: 0.4
     width: 1
     height: 1
   near clip plane: 0.3
