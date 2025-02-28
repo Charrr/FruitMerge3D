@@ -8,12 +8,17 @@ namespace CharlieCares.FruitMerge.Interaction
         [Header("References")]
         [SerializeField] private InputActionReference _dragAction;
         [SerializeField] private InputActionReference _primaryFingerPosAction, _secondaryFingerPosAction;
+        [SerializeField] private RectTransform _pnlInteractionView;
 
         [Header("Configuration")]
-        [SerializeField] private Vector2 _rotateFactor = Vector2.one * 5f;
+        [SerializeField] private Vector2 _dragFactor = Vector2.one * 5f;
+        [SerializeField] private float _pinchFactor = 5f;
 
         public Vector2 DebugDragValue;
-        public Vector2 DebugFingerPos0, DebugFingerPos1;
+        public Vector2 _currentPosFinger0, _currentPosFinger1;
+
+        private Vector2 _lastPosFinger0, _lastPosFinger1;
+        private float _currentFingerDistance, _lastFingerDistance;
 
         private InteractionManager _interactionManager;
 
@@ -38,12 +43,35 @@ namespace CharlieCares.FruitMerge.Interaction
 
         private void Update()
         {
-            DebugDragValue = _dragAction.action.ReadValue<Vector2>();
-            _interactionManager.OrbitViewHorizontally(DebugDragValue.x * _rotateFactor.x);
-            _interactionManager.OrbitViewVertically(-DebugDragValue.y * _rotateFactor.y);
+            if (Touchscreen.current == null)
+                return;
 
-            DebugFingerPos0 = _primaryFingerPosAction.action.ReadValue<Vector2>();
-            DebugFingerPos1 = _secondaryFingerPosAction.action.ReadValue<Vector2>();
+            int touchCount = UnityEngine.InputSystem.EnhancedTouch.Touch.activeTouches.Count;
+
+            if (touchCount == 0)
+                return;
+
+            if (touchCount == 1)
+            {
+                _currentPosFinger0 = Touchscreen.current.touches[0].position.value;
+
+                if (!IsInInteractionView(_currentPosFinger0))
+                {
+                    DebugDragValue = Touchscreen.current.touches[0].delta.value;
+                    OrbitViewOnDrag(DebugDragValue);
+                }
+            }
+        }
+
+        private void OrbitViewOnDrag(Vector2 drag)
+        {
+            _interactionManager.OrbitViewHorizontally(drag.x * _dragFactor.x);
+            _interactionManager.OrbitViewVertically(-drag.y * _dragFactor.y);
+        }
+
+        private bool IsInInteractionView(Vector2 point)
+        {
+            return RectTransformUtility.RectangleContainsScreenPoint(_pnlInteractionView, point);
         }
     }
 }
