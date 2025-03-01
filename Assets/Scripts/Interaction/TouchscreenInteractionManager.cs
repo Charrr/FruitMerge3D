@@ -1,44 +1,30 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Controls;
 
 namespace CharlieCares.FruitMerge.Interaction
 {
     public class TouchscreenInteractionManager : MonoBehaviour
     {
-        [Header("References")]
-        [SerializeField] private InputActionReference _dragAction;
-        [SerializeField] private InputActionReference _primaryFingerPosAction, _secondaryFingerPosAction;
         [SerializeField] private RectTransform _pnlInteractionView;
 
         [Header("Configuration")]
         [SerializeField] private Vector2 _dragFactor = Vector2.one * 5f;
         [SerializeField] private float _pinchFactor = 5f;
-
-        public Vector2 DebugDragValue;
-        public Vector2 _currentPosFinger0, _currentPosFinger1;
-
-        private Vector2 _lastPosFinger0, _lastPosFinger1;
+        
+        
+        private Vector2 _currentPosFinger0, _currentPosFinger1;
         private float _currentFingerDistance, _lastFingerDistance;
+        private bool _isPinching = false;
 
         private InteractionManager _interactionManager;
+
+        private const int _MAX_TOUCHCOUNT = 3;
 
         private void Awake()
         {
             _interactionManager = FindFirstObjectByType<InteractionManager>();
-        }
-
-        private void OnEnable()
-        {
-            _dragAction.action.Enable();
-            _primaryFingerPosAction.action.Enable();
-            _secondaryFingerPosAction.action.Enable();
-        }
-
-        private void OnDisable()
-        {
-            _dragAction.action.Disable();
-            _primaryFingerPosAction.action.Disable();
-            _secondaryFingerPosAction.action.Disable();
         }
 
         private void Update()
@@ -46,20 +32,39 @@ namespace CharlieCares.FruitMerge.Interaction
             if (Touchscreen.current == null)
                 return;
 
-            int touchCount = UnityEngine.InputSystem.EnhancedTouch.Touch.activeTouches.Count;
+            var touches = Touchscreen.current.touches;
 
-            if (touchCount == 0)
-                return;
-
-            if (touchCount == 1)
+            var _validTouches = new List<TouchControl>(capacity: _MAX_TOUCHCOUNT);
+            for (int i = 0; i < _MAX_TOUCHCOUNT; i++)
             {
-                _currentPosFinger0 = Touchscreen.current.touches[0].position.value;
+                if (touches[i].isInProgress && !IsInInteractionView(touches[i].position.value))
+                    _validTouches.Add(touches[i]);
+            }
 
-                if (!IsInInteractionView(_currentPosFinger0))
+            if (_validTouches.Count == 1)
+            {
+                OrbitViewOnDrag(_validTouches[0].delta.value);
+                _isPinching = false;
+            }
+            else if (_validTouches.Count == 2)
+            {
+                _currentPosFinger0 = _validTouches[0].position.value;
+                _currentPosFinger1 = _validTouches[1].position.value;
+                _currentFingerDistance = Vector2.Distance(_currentPosFinger0, _currentPosFinger1);
+
+                if (!_isPinching)
                 {
-                    DebugDragValue = Touchscreen.current.touches[0].delta.value;
-                    OrbitViewOnDrag(DebugDragValue);
+                    _lastFingerDistance = _currentFingerDistance;
+                    _isPinching = true;
+                    return;
                 }
+
+                ZoomOnPinch(_currentFingerDistance - _lastFingerDistance);
+                _lastFingerDistance = _currentFingerDistance;
+            }
+            else
+            {
+                _isPinching = false;
             }
         }
 
@@ -67,6 +72,12 @@ namespace CharlieCares.FruitMerge.Interaction
         {
             _interactionManager.OrbitViewHorizontally(drag.x * _dragFactor.x);
             _interactionManager.OrbitViewVertically(-drag.y * _dragFactor.y);
+        }
+
+        private void ZoomOnPinch(float pinch)
+        {
+            if (pinch != 0)
+                _interactionManager.ZoomView(pinch * _pinchFactor);
         }
 
         private bool IsInInteractionView(Vector2 point)

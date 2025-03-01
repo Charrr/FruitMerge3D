@@ -556,10 +556,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6657006983286808091, guid: 7f3f1005fde5548c7ab74fcf19b4bbbd, type: 3}
-      propertyPath: _pinchFactor
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6657006983286808091, guid: 7f3f1005fde5548c7ab74fcf19b4bbbd, type: 3}
       propertyPath: _pnlInteractionView
       value: 
       objectReference: {fileID: 1008166171}

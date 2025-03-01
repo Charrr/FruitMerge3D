@@ -98,13 +98,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efad50ffa5a8c4f6cb526a95c73cc7d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _dragAction: {fileID: -817888601876664972, guid: 9be61bd3158f44bf09fb758c0b2876c2, type: 3}
-  _primaryFingerPosAction: {fileID: 264147883436535409, guid: 9be61bd3158f44bf09fb758c0b2876c2, type: 3}
-  _secondaryFingerPosAction: {fileID: 9059384505072407066, guid: 9be61bd3158f44bf09fb758c0b2876c2, type: 3}
-  _rotateFactor: {x: 5, y: 5}
-  DebugDragValue: {x: 0, y: 0}
-  DebugFingerPos0: {x: 0, y: 0}
-  DebugFingerPos1: {x: 0, y: 0}
+  _pnlInteractionView: {fileID: 0}
+  _dragFactor: {x: 10, y: 10}
+  _pinchFactor: 1
 --- !u!1 &7097223266064584612
 GameObject:
   m_ObjectHideFlags: 0

@@ -85,7 +85,7 @@ namespace CharlieCares.FruitMerge.Interaction
             OrbitViewVertically(-_rotateViewIncrement);
         }
 
-        private void ZoomView(float zoom)
+        public void ZoomView(float zoom)
         {
             float distance = Vector3.Distance(_originReference.position, _camera.transform.position);
             if ((distance <= _minDistance && zoom > 0) || (distance >= _maxDistance && zoom < 0))
