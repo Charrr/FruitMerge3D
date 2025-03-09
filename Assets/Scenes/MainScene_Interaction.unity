@@ -245,6 +245,11 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 1
+--- !u!224 &523408276 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 149769290712274554, guid: 2847306a4568d4dbaa41bad0da478905, type: 3}
+  m_PrefabInstance: {fileID: 1231221086847146072}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -449,18 +454,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 221193605619610543, guid: 2847306a4568d4dbaa41bad0da478905, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 221193605619610543, guid: 2847306a4568d4dbaa41bad0da478905, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 221193605619610543, guid: 2847306a4568d4dbaa41bad0da478905, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5523901334107007850, guid: 2847306a4568d4dbaa41bad0da478905, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -562,6 +555,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6657006983286808091, guid: 7f3f1005fde5548c7ab74fcf19b4bbbd, type: 3}
+      propertyPath: _pnlInteractionView
+      value: 
+      objectReference: {fileID: 523408276}
     - target: {fileID: 7755371933351963690, guid: 7f3f1005fde5548c7ab74fcf19b4bbbd, type: 3}
       propertyPath: _spawnRoot
       value: 

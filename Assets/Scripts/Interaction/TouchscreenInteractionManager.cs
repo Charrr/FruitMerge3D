@@ -13,7 +13,6 @@ namespace CharlieCares.FruitMerge.Interaction
         [SerializeField] private Vector2 _dragFactor = Vector2.one * 5f;
         [SerializeField] private float _pinchFactor = 5f;
         
-        
         private Vector2 _currentPosFinger0, _currentPosFinger1;
         private float _currentFingerDistance, _lastFingerDistance;
         private bool _isPinching = false;
