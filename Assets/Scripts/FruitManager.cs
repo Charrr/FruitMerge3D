@@ -92,5 +92,15 @@ namespace CharlieCares.FruitMerge
             Destroy(fruitB.gameObject);
             SpawnFruit(newFruitType, spawnPos, spawnRot);
         }
+
+        public void ClearAllFruits()
+        {
+            foreach (Transform child in _spawnRoot)
+            {
+                if (child.TryGetComponent<PreviewFruit>(out _))
+                    continue;
+                Destroy(child.gameObject);
+            }
+        }
     }
 }
