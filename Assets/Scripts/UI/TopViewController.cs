@@ -46,8 +46,8 @@ namespace CharlieCares.FruitMerge
 
         private Vector2 NormalizePositionOnMap(Vector2 localPos)
         {
-            float width = _rt.sizeDelta.x;
-            float height = _rt.sizeDelta.y;
+            float width = _rt.rect.width;
+            float height = _rt.rect.height;
             return new Vector2(localPos.x / width, localPos.y / height);
         }
 

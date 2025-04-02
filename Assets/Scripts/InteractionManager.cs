@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace CharlieCares
+namespace CharlieCares.FruitMerge.Interaction
 {
     public class InteractionManager : MonoBehaviour
     {
@@ -48,13 +48,13 @@ namespace CharlieCares
             }
         }
 
-        private void OrbitViewHorizontally(float angle)
+        public void OrbitViewHorizontally(float angle)
         {
             _camera.transform.RotateAround(_originReference.position, Vector3.up, angle * Time.deltaTime);
             _originReference.transform.eulerAngles = new Vector3(0f, _camera.transform.eulerAngles.y, 0f);
         }
 
-        private void OrbitViewVertically(float angle)
+        public void OrbitViewVertically(float angle)
         {
             float camPitch = _camera.transform.eulerAngles.x;
             float camPitchNormalized = camPitch < 180f ? camPitch : camPitch - 360f;
@@ -85,7 +85,7 @@ namespace CharlieCares
             OrbitViewVertically(-_rotateViewIncrement);
         }
 
-        private void ZoomView(float zoom)
+        public void ZoomView(float zoom)
         {
             float distance = Vector3.Distance(_originReference.position, _camera.transform.position);
             if ((distance <= _minDistance && zoom > 0) || (distance >= _maxDistance && zoom < 0))
