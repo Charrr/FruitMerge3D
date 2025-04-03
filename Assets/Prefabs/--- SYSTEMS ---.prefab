@@ -86,7 +86,9 @@ MonoBehaviour:
   _zoomViewIncrement: 30
   _minDistance: 6
   _maxDistance: 20
-  _originReference: {fileID: 0}
+  _dragFactor: {x: 100, y: 100}
+  _pnlInteractionView: {fileID: 0}
+  _originReference: {fileID: 7440877789000625140}
 --- !u!114 &6657006983286808091
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -352,6 +354,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 502c5098a248f4383a5e6278e3ed2483, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _btnRestart: {fileID: 0}
 --- !u!1 &9166613327483787122
 GameObject:
   m_ObjectHideFlags: 0
