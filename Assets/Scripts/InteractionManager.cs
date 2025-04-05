@@ -25,6 +25,14 @@ namespace CharlieCares.FruitMerge.Interaction
 
         private void Update()
         {
+            if (_keyboard != null)
+                UpdateKeyboardControls();
+            if (_mouse != null)
+                UpdateMouseControls();
+        }
+
+        private void UpdateKeyboardControls()
+        {
             if (_keyboard.leftArrowKey.isPressed)
             {
                 OrbitViewLeft();
@@ -42,7 +50,10 @@ namespace CharlieCares.FruitMerge.Interaction
             {
                 OrbitViewDown();
             }
+        }
 
+        private void UpdateMouseControls()
+        {
             float scrollY = _mouse.scroll.y.value;
             if (scrollY != 0)
             {

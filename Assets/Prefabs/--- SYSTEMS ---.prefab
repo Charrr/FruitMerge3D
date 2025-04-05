@@ -84,8 +84,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rotateViewIncrement: 60
   _zoomViewIncrement: 30
-  _minDistance: 6
-  _maxDistance: 20
+  _minDistance: 5
+  _maxDistance: 50
   _dragFactor: {x: 100, y: 100}
   _pnlInteractionView: {fileID: 0}
   _originReference: {fileID: 7440877789000625140}
