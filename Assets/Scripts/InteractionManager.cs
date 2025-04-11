@@ -1,13 +1,15 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace CharlieCares
+namespace CharlieCares.FruitMerge.Interaction
 {
     public class InteractionManager : MonoBehaviour
     {
         [SerializeField] private float _rotateViewIncrement = 60f;
         [SerializeField] private float _zoomViewIncrement = 30f;
         [SerializeField] private float _minDistance = 6f, _maxDistance = 20f;
+        [SerializeField] private Vector2 _dragFactor = Vector2.one * 5f;
+        [SerializeField] private RectTransform _pnlInteractionView;
         [SerializeField] private Transform _originReference;
         private Camera _camera;
         private Keyboard _keyboard;
@@ -22,6 +24,14 @@ namespace CharlieCares
         }
 
         private void Update()
+        {
+            if (_keyboard != null)
+                UpdateKeyboardControls();
+            if (_mouse != null)
+                UpdateMouseControls();
+        }
+
+        private void UpdateKeyboardControls()
         {
             if (_keyboard.leftArrowKey.isPressed)
             {
@@ -40,21 +50,33 @@ namespace CharlieCares
             {
                 OrbitViewDown();
             }
+        }
 
+        private void UpdateMouseControls()
+        {
             float scrollY = _mouse.scroll.y.value;
             if (scrollY != 0)
             {
                 ZoomView(scrollY * _zoomViewIncrement);
             }
+
+            if (_mouse.leftButton.isPressed)
+            {
+                if (RectTransformUtility.RectangleContainsScreenPoint(_pnlInteractionView, _mouse.position.value))
+                    return;
+                Vector2 drag = _mouse.delta.value;
+                OrbitViewHorizontally(drag.x * _dragFactor.x);
+                OrbitViewVertically(-drag.y * _dragFactor.y);
+            }
         }
 
-        private void OrbitViewHorizontally(float angle)
+        public void OrbitViewHorizontally(float angle)
         {
             _camera.transform.RotateAround(_originReference.position, Vector3.up, angle * Time.deltaTime);
             _originReference.transform.eulerAngles = new Vector3(0f, _camera.transform.eulerAngles.y, 0f);
         }
 
-        private void OrbitViewVertically(float angle)
+        public void OrbitViewVertically(float angle)
         {
             float camPitch = _camera.transform.eulerAngles.x;
             float camPitchNormalized = camPitch < 180f ? camPitch : camPitch - 360f;
@@ -85,7 +107,7 @@ namespace CharlieCares
             OrbitViewVertically(-_rotateViewIncrement);
         }
 
-        private void ZoomView(float zoom)
+        public void ZoomView(float zoom)
         {
             float distance = Vector3.Distance(_originReference.position, _camera.transform.position);
             if ((distance <= _minDistance && zoom > 0) || (distance >= _maxDistance && zoom < 0))
