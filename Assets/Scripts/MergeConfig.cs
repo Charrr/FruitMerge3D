@@ -15,7 +15,7 @@ namespace CharlieCares.FruitMerge
 
         public int FruitConfigCount => _fruitConfigs.Count;
 
-        private void OnValidate()
+        private void Awake()
         {
             InitMergeScores();
         }
