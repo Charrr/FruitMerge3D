@@ -18,5 +18,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b3d7a414554895846b22d5e2824a4c86, type: 2}
   - {fileID: 11400000, guid: b6d4a80871c551741bcf38f74fe08629, type: 2}
   - {fileID: 11400000, guid: 96d4fdb9074944cdf9f3256722326f79, type: 2}
+  - {fileID: 11400000, guid: 7245d2c5431904d6bae8bd49d955c8db, type: 2}
   - {fileID: 11400000, guid: 5f26d3d1accceb74ba49c4e01dca182a, type: 2}
   - {fileID: 11400000, guid: 506375d8b6f2b4c4dab7854047672f17, type: 2}
+  _maxSpawnLevel: 4
