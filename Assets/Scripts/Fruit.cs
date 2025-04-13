@@ -19,6 +19,7 @@ namespace CharlieCares.FruitMerge
             set
             {
                 _isUnderPreview = value;
+                MaterialHelper.SetGameObjectOpacity(gameObject, _isUnderPreview ? 0.6f : 1f);
                 _rb.detectCollisions = !value;
                 _rb.useGravity = !value;
                 if (value)

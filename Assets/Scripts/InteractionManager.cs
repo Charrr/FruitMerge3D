@@ -8,6 +8,8 @@ namespace CharlieCares.FruitMerge.Interaction
         [SerializeField] private float _rotateViewIncrement = 60f;
         [SerializeField] private float _zoomViewIncrement = 30f;
         [SerializeField] private float _minDistance = 6f, _maxDistance = 20f;
+        [SerializeField] private Vector2 _dragFactor = Vector2.one * 5f;
+        [SerializeField] private RectTransform _pnlInteractionView;
         [SerializeField] private Transform _originReference;
         private Camera _camera;
         private Keyboard _keyboard;
@@ -22,6 +24,14 @@ namespace CharlieCares.FruitMerge.Interaction
         }
 
         private void Update()
+        {
+            if (_keyboard != null)
+                UpdateKeyboardControls();
+            if (_mouse != null)
+                UpdateMouseControls();
+        }
+
+        private void UpdateKeyboardControls()
         {
             if (_keyboard.leftArrowKey.isPressed)
             {
@@ -40,11 +50,23 @@ namespace CharlieCares.FruitMerge.Interaction
             {
                 OrbitViewDown();
             }
+        }
 
+        private void UpdateMouseControls()
+        {
             float scrollY = _mouse.scroll.y.value;
             if (scrollY != 0)
             {
                 ZoomView(scrollY * _zoomViewIncrement);
+            }
+
+            if (_mouse.leftButton.isPressed)
+            {
+                if (RectTransformUtility.RectangleContainsScreenPoint(_pnlInteractionView, _mouse.position.value))
+                    return;
+                Vector2 drag = _mouse.delta.value;
+                OrbitViewHorizontally(drag.x * _dragFactor.x);
+                OrbitViewVertically(-drag.y * _dragFactor.y);
             }
         }
 

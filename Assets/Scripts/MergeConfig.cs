@@ -10,10 +10,12 @@ namespace CharlieCares.FruitMerge
     public class MergeConfig : ScriptableObject
     {
         [SerializeField] private List<FruitConfig> _fruitConfigs = new();
+        [Tooltip("Only fruits smaller than this level will be randomly spawned.")]
+        [SerializeField] private int _maxSpawnLevel = 4;
 
         public int FruitConfigCount => _fruitConfigs.Count;
 
-        private void OnValidate()
+        private void Awake()
         {
             InitMergeScores();
         }
@@ -41,7 +43,7 @@ namespace CharlieCares.FruitMerge
 
         public FruitConfig GetRandomFruitConfig()
         {
-            return _fruitConfigs[Random.Range(0, FruitConfigCount)];
+            return _fruitConfigs[Random.Range(0, _maxSpawnLevel)];
         }
 
         public FruitConfig GetNextFruitConfigInOrder(FruitConfig fruit)

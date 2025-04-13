@@ -12,6 +12,7 @@ namespace CharlieCares.ScoreSystem
         public static void AddScore(int increment)
         {
             _currentScore += increment;
+            Debug.Log("_currentScore " + _currentScore + ", increment " + increment);
             OnScoreChanged?.Invoke(_currentScore);
         }
 
