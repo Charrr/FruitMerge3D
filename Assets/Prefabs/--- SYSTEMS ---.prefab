@@ -30,7 +30,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7440877789000625140}
-  - {fileID: 5020100132564551130}
   - {fileID: 8184966881433229750}
   - {fileID: 2232845769765984556}
   - {fileID: 1584705663344079461}
@@ -89,6 +88,7 @@ MonoBehaviour:
   _dragFactor: {x: 100, y: 100}
   _pnlInteractionView: {fileID: 0}
   _originReference: {fileID: 7440877789000625140}
+  DebugPoint: {x: 0, y: 0, z: 0}
 --- !u!114 &6657006983286808091
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -132,7 +132,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 5020100132564551130}
   m_Father: {fileID: 4158392655297122980}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7766506017717524776
@@ -382,12 +383,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9166613327483787122}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -16}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 4158392655297122980}
+  m_Father: {fileID: 7440877789000625140}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &6903861570750910153
 Camera:

@@ -72,19 +72,18 @@ namespace CharlieCares.FruitMerge.Interaction
 
         public void OrbitViewHorizontally(float angle)
         {
-            _camera.transform.RotateAround(_originReference.position, Vector3.up, angle * Time.deltaTime);
-            _originReference.transform.eulerAngles = new Vector3(0f, _camera.transform.eulerAngles.y, 0f);
+            _originReference.transform.eulerAngles += new Vector3(0f, angle * Time.deltaTime, 0f);
         }
 
         public void OrbitViewVertically(float angle)
         {
-            float camPitch = _camera.transform.eulerAngles.x;
-            float camPitchNormalized = camPitch < 180f ? camPitch : camPitch - 360f;
-            float newAngle = camPitchNormalized + angle * Time.deltaTime;
-            if (newAngle <= -90f || newAngle >= 90f)
-                return;
+            float newRotX = _originReference.transform.eulerAngles.x + angle * Time.deltaTime;
+            if (newRotX > 89.9f && newRotX <= 180f)
+                newRotX = 89.9f;
+            else if (newRotX > 180f && newRotX < 270.1f)
+                newRotX = 270.1f;
 
-            _camera.transform.RotateAround(_originReference.position, _originReference.right, angle * Time.deltaTime);
+            _originReference.transform.eulerAngles = new Vector3(newRotX, _originReference.transform.eulerAngles.y, _originReference.transform.eulerAngles.z);
         }
 
         private void OrbitViewLeft()
@@ -109,11 +108,8 @@ namespace CharlieCares.FruitMerge.Interaction
 
         public void ZoomView(float zoom)
         {
-            float distance = Vector3.Distance(_originReference.position, _camera.transform.position);
-            if ((distance <= _minDistance && zoom > 0) || (distance >= _maxDistance && zoom < 0))
-                return;
-
-            _camera.transform.Translate(Vector3.forward * zoom * Time.deltaTime, Space.Self);
+            float newPosZ = _camera.transform.localPosition.z + zoom * Time.deltaTime;
+            _camera.transform.localPosition = new Vector3(0f, 0f, Mathf.Clamp(newPosZ, -_maxDistance, -_minDistance));
         }
     }
 }
