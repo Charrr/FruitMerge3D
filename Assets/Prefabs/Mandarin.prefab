@@ -10,15 +10,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 97052a6c9d51b144ea88c8fa6e7ce601, type: 3}
       propertyPath: m_LocalScale.x
-      value: 75
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 97052a6c9d51b144ea88c8fa6e7ce601, type: 3}
       propertyPath: m_LocalScale.y
-      value: 75
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 97052a6c9d51b144ea88c8fa6e7ce601, type: 3}
       propertyPath: m_LocalScale.z
-      value: 70.124985
+      value: 93.499985
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 97052a6c9d51b144ea88c8fa6e7ce601, type: 3}
       propertyPath: m_LocalPosition.x
@@ -131,7 +131,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
