@@ -389,11 +389,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &1817230073 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7440877789000625140, guid: 7f3f1005fde5548c7ab74fcf19b4bbbd, type: 3}
-  m_PrefabInstance: {fileID: 5040113379584304882}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &698802512910846839
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -471,13 +466,21 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 221193605619610543, guid: 2847306a4568d4dbaa41bad0da478905, type: 3}
-      propertyPath: m_SizeDelta.y
+    - target: {fileID: 4599848875880325349, guid: 2847306a4568d4dbaa41bad0da478905, type: 3}
+      propertyPath: m_AnchorMax.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 986736402384476036, guid: 2847306a4568d4dbaa41bad0da478905, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -32
+    - target: {fileID: 4599848875880325349, guid: 2847306a4568d4dbaa41bad0da478905, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4599848875880325349, guid: 2847306a4568d4dbaa41bad0da478905, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4599848875880325349, guid: 2847306a4568d4dbaa41bad0da478905, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5523901334107007850, guid: 2847306a4568d4dbaa41bad0da478905, type: 3}
       propertyPath: m_LocalPosition.x
@@ -596,10 +599,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6657006983286808091, guid: 7f3f1005fde5548c7ab74fcf19b4bbbd, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6657006983286808091, guid: 7f3f1005fde5548c7ab74fcf19b4bbbd, type: 3}
       propertyPath: _pnlInteractionView
       value: 
       objectReference: {fileID: 523408276}
@@ -611,18 +610,6 @@ PrefabInstance:
       propertyPath: _topViewMap
       value: 
       objectReference: {fileID: 852389373}
-    - target: {fileID: 8431482275824294652, guid: 7f3f1005fde5548c7ab74fcf19b4bbbd, type: 3}
-      propertyPath: _dragFactor.x
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 8431482275824294652, guid: 7f3f1005fde5548c7ab74fcf19b4bbbd, type: 3}
-      propertyPath: _dragFactor.y
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 8431482275824294652, guid: 7f3f1005fde5548c7ab74fcf19b4bbbd, type: 3}
-      propertyPath: _originReference
-      value: 
-      objectReference: {fileID: 1817230073}
     - target: {fileID: 8431482275824294652, guid: 7f3f1005fde5548c7ab74fcf19b4bbbd, type: 3}
       propertyPath: _pnlInteractionView
       value: 
