@@ -114,7 +114,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4880751096876841434}
   - component: {fileID: 7768785559508801816}
-  - component: {fileID: 2763485023654480900}
   - component: {fileID: 2313260721552112476}
   m_Layer: 0
   m_Name: PreviewFruitsCamera
@@ -177,7 +176,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 64
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: d25834715b8154d3f82f466014710a44, type: 2}
   m_TargetDisplay: 0
@@ -189,14 +188,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &2763485023654480900
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5388817018144285832}
-  m_Enabled: 1
 --- !u!114 &2313260721552112476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -566,7 +557,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 55
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0

@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 151081850778057766}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: -- Preview Fruits --
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,6 +90,10 @@ PrefabInstance:
     - target: {fileID: 5209475558607413543, guid: a53c4b44d6a7b404bad3a07a56f0fefc, type: 3}
       propertyPath: m_Name
       value: Banana
+      objectReference: {fileID: 0}
+    - target: {fileID: 5209475558607413543, guid: a53c4b44d6a7b404bad3a07a56f0fefc, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -174,6 +178,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lemon
       objectReference: {fileID: 0}
+    - target: {fileID: 4540520785412102424, guid: 9c8cec8eb957a6c459cad38c4aeaf1e8, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -257,6 +265,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Watermelon
       objectReference: {fileID: 0}
+    - target: {fileID: 4254219563053561579, guid: d9228d8a1fe9ce04583369f2c6acd3b6, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -299,6 +311,10 @@ PrefabInstance:
     - target: {fileID: 6187766132649970168, guid: 690d2834640e84c4094d9562581fa605, type: 3}
       propertyPath: m_Name
       value: Mandarin
+      objectReference: {fileID: 0}
+    - target: {fileID: 6187766132649970168, guid: 690d2834640e84c4094d9562581fa605, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6815226273560466242, guid: 690d2834640e84c4094d9562581fa605, type: 3}
       propertyPath: m_LocalPosition.x
@@ -423,6 +439,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Raspberry
       objectReference: {fileID: 0}
+    - target: {fileID: 6369215942937264658, guid: 10b4be6a30ae1804b87b16dc6d95e556, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -506,6 +526,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Peach
       objectReference: {fileID: 0}
+    - target: {fileID: 800126680637750926, guid: a336b71198bd26041b2f8868199f2ac3, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -548,6 +572,10 @@ PrefabInstance:
     - target: {fileID: 6087029033563890015, guid: 27e9834fef8d00e4e8365353c2d89b3b, type: 3}
       propertyPath: m_Name
       value: Melon
+      objectReference: {fileID: 0}
+    - target: {fileID: 6087029033563890015, guid: 27e9834fef8d00e4e8365353c2d89b3b, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6859729948872080357, guid: 27e9834fef8d00e4e8365353c2d89b3b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -628,9 +656,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 151081850778057766}
     m_Modifications:
+    - target: {fileID: 461776681096399510, guid: 8b663e9c65cd91e4488fb86e835f90c8, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 5914131784118472406, guid: 8b663e9c65cd91e4488fb86e835f90c8, type: 3}
       propertyPath: m_Name
       value: Blueberry
+      objectReference: {fileID: 0}
+    - target: {fileID: 5914131784118472406, guid: 8b663e9c65cd91e4488fb86e835f90c8, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6438149832376505452, guid: 8b663e9c65cd91e4488fb86e835f90c8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -671,6 +707,10 @@ PrefabInstance:
     - target: {fileID: 6438149832376505452, guid: 8b663e9c65cd91e4488fb86e835f90c8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8068836501957955401, guid: 8b663e9c65cd91e4488fb86e835f90c8, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
