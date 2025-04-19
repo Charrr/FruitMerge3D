@@ -48,7 +48,7 @@ namespace CharlieCares.FruitMerge
             fruit.IsUnderPreview = preview;
             fruit.transform.SetPositionAndRotation(spawnPos, spawnRot);
             fruit.SetConfig(config);
-            fruit.OnCollidedWithFruit += HandleFruitCollision;
+            fruit.OnCollidedWithSameFruit += HandleFruitCollision;
             return fruit;
         }
 
@@ -85,6 +85,12 @@ namespace CharlieCares.FruitMerge
         private void HandleFruitCollision(Fruit fruitA, Fruit fruitB)
         {
             FruitConfig newFruitType = _mergeConfig.GetNextFruitConfigInOrder(fruitA.Config);
+            if (newFruitType == null)
+            {
+                Destroy(fruitA.gameObject);
+                Destroy(fruitB.gameObject);
+                return;
+            }
             Vector3 spawnPos = (fruitA.transform.position + fruitB.transform.position) / 2;
             Quaternion spawnRot = Quaternion.LookRotation(fruitA.transform.position - fruitB.transform.position);
             ScoreManager.AddScore(fruitA.Config.MergeScore);

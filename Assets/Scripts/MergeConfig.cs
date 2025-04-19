@@ -54,7 +54,11 @@ namespace CharlieCares.FruitMerge
                 Debug.LogError($"Fruit type {fruit.Name} is not registered.", fruit);
                 return null;
             }
-            return _fruitConfigs[Mathf.Clamp(fruitIndex + 1, 0, FruitConfigCount - 1)];
+            else if (fruitIndex >= FruitConfigCount - 1)
+            {
+                return null;
+            }
+            return _fruitConfigs[fruitIndex + 1];
         }
     }
 }
