@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Melon
   _prefab: {fileID: 4544582054829131186, guid: 27e9834fef8d00e4e8365353c2d89b3b, type: 3}
+  _mergeSound: {fileID: 8300000, guid: a37f44cbf8c2a7443a3c361efa2f233a, type: 3}
