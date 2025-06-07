@@ -29,6 +29,11 @@ namespace CharlieCares.FruitMerge
             }
         }
 
+        public int GetIndexOfFruitConfig(FruitConfig fruitConfig)
+        {
+            return _fruitConfigs.IndexOf(fruitConfig);
+        }
+
         public FruitConfig GetFruitConfigByIndex(int index)
         {
             if (index >= FruitConfigCount)

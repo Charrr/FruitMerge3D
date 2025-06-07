@@ -550,6 +550,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 127892059623359970, guid: 7f3f1005fde5548c7ab74fcf19b4bbbd, type: 3}
+      propertyPath: _mergeSoundSource
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1025354277692257070, guid: 7f3f1005fde5548c7ab74fcf19b4bbbd, type: 3}
       propertyPath: _btnRestart
       value: 
