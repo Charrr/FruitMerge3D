@@ -119,6 +119,17 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &316765877 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7101753804220420514, guid: 2847306a4568d4dbaa41bad0da478905, type: 3}
+  m_PrefabInstance: {fileID: 1231221086847146072}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cd9d7797d7324f02a8f1d3473cb0c5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &383965135 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2885036556649498544, guid: 209c2a80f67364b5b98ae9e286faf7f2, type: 3}
@@ -299,17 +310,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &852389373 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2463117787899785330, guid: 2847306a4568d4dbaa41bad0da478905, type: 3}
-  m_PrefabInstance: {fileID: 1231221086847146072}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8cd9d7797d7324f02a8f1d3473cb0c5b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1100788123
 GameObject:
   m_ObjectHideFlags: 0
@@ -466,6 +466,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 986736402384476036, guid: 2847306a4568d4dbaa41bad0da478905, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -32
+      objectReference: {fileID: 0}
     - target: {fileID: 4599848875880325349, guid: 2847306a4568d4dbaa41bad0da478905, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -613,7 +617,7 @@ PrefabInstance:
     - target: {fileID: 7755371933351963690, guid: 7f3f1005fde5548c7ab74fcf19b4bbbd, type: 3}
       propertyPath: _topViewMap
       value: 
-      objectReference: {fileID: 852389373}
+      objectReference: {fileID: 316765877}
     - target: {fileID: 8431482275824294652, guid: 7f3f1005fde5548c7ab74fcf19b4bbbd, type: 3}
       propertyPath: _pnlInteractionView
       value: 
