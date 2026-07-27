@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Mandarin
   _prefab: {fileID: 1162262086845358196, guid: 690d2834640e84c4094d9562581fa605, type: 3}
+  _mergeSound: {fileID: 8300000, guid: 75adfe9a619833445a701305b983e548, type: 3}

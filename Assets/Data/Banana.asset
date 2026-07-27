@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Banana
   _prefab: {fileID: 3812790612197831026, guid: a53c4b44d6a7b404bad3a07a56f0fefc, type: 3}
+  _mergeSound: {fileID: 8300000, guid: bb6cdd13aeb95f743847b1cd460889bc, type: 3}

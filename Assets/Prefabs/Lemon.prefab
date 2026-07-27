@@ -10,15 +10,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 4b836220e6e0a11409b44a329f7ee333, type: 3}
       propertyPath: m_LocalScale.x
-      value: 85
+      value: 110
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4b836220e6e0a11409b44a329f7ee333, type: 3}
       propertyPath: m_LocalScale.y
-      value: 85
+      value: 110
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4b836220e6e0a11409b44a329f7ee333, type: 3}
       propertyPath: m_LocalScale.z
-      value: 85
+      value: 110
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4b836220e6e0a11409b44a329f7ee333, type: 3}
       propertyPath: m_LocalPosition.x
@@ -74,7 +74,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4b836220e6e0a11409b44a329f7ee333, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 8778416181379440989}
+      addedObject: {fileID: 580511587362340180}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4b836220e6e0a11409b44a329f7ee333, type: 3}
       insertIndex: -1
       addedObject: {fileID: 643977671724538281}
@@ -87,8 +87,8 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 4b836220e6e0a11409b44a329f7ee333, type: 3}
   m_PrefabInstance: {fileID: 3729616323148850249}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &8778416181379440989
-MeshCollider:
+--- !u!136 &580511587362340180
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -105,10 +105,11 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 3294163407509072224, guid: 4b836220e6e0a11409b44a329f7ee333, type: 3}
+  serializedVersion: 2
+  m_Radius: 0.0094
+  m_Height: 0.022
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &643977671724538281
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -131,7 +132,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0

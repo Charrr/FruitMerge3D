@@ -7,8 +7,10 @@ namespace CharlieCares.FruitMerge
     {
         [SerializeField] private string _name;
         [SerializeField] private Fruit _prefab;
+        [SerializeField] private AudioClip _mergeSound;
         public string Name => _name;
         public Fruit Prefab => _prefab;
         public int MergeScore { get; set; }
+        public AudioClip MergeSound => _mergeSound;
     }
 }

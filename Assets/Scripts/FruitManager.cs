@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using CharlieCares.FruitMerge.SoundSystem;
 using CharlieCares.ScoreSystem;
 using UnityEngine;
 
@@ -11,6 +12,12 @@ namespace CharlieCares.FruitMerge
         [SerializeField] private TopViewController _topViewMap;
 
         private Fruit _previewFruit;
+        private SoundManager _soundManager;
+
+        private void Awake()
+        {
+            _soundManager = FindAnyObjectByType<SoundManager>();
+        }
 
         private void Update()
         {
@@ -48,7 +55,7 @@ namespace CharlieCares.FruitMerge
             fruit.IsUnderPreview = preview;
             fruit.transform.SetPositionAndRotation(spawnPos, spawnRot);
             fruit.SetConfig(config);
-            fruit.OnCollidedWithFruit += HandleFruitCollision;
+            fruit.OnCollidedWithSameFruit += HandleFruitCollision;
             return fruit;
         }
 
@@ -85,9 +92,16 @@ namespace CharlieCares.FruitMerge
         private void HandleFruitCollision(Fruit fruitA, Fruit fruitB)
         {
             FruitConfig newFruitType = _mergeConfig.GetNextFruitConfigInOrder(fruitA.Config);
+            if (newFruitType == null)
+            {
+                Destroy(fruitA.gameObject);
+                Destroy(fruitB.gameObject);
+                return;
+            }
             Vector3 spawnPos = (fruitA.transform.position + fruitB.transform.position) / 2;
             Quaternion spawnRot = Quaternion.LookRotation(fruitA.transform.position - fruitB.transform.position);
             ScoreManager.AddScore(fruitA.Config.MergeScore);
+            _soundManager.PlayMergeSound(fruitA.Config);
             Destroy(fruitA.gameObject);
             Destroy(fruitB.gameObject);
             SpawnFruit(newFruitType, spawnPos, spawnRot);

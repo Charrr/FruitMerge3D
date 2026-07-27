@@ -10,7 +10,7 @@ namespace CharlieCares.FruitMerge
         private bool _isUnderPreview = true;
         private PreviewFruit _previewBehaviour;
 
-        public event Action<Fruit, Fruit> OnCollidedWithFruit;
+        public event Action<Fruit, Fruit> OnCollidedWithSameFruit;
 
         public FruitConfig Config => _config;
         public bool IsUnderPreview
@@ -40,9 +40,14 @@ namespace CharlieCares.FruitMerge
             _rb = GetComponent<Rigidbody>();
         }
 
+        private void OnDestroy()
+        {
+            OnCollidedWithSameFruit = null;
+        }
+
         public void SetConfig(FruitConfig config)
         {
-            name = config.Name + GetInstanceID();
+            name = config.Name + GetHashCode();
             _config = config;
         }
 
@@ -59,12 +64,12 @@ namespace CharlieCares.FruitMerge
             {
                 if (otherFruit.IsUnderPreview)
                     return;
-
-                // Compare ID to avoid the same collision action being invoked twice.
-                if (otherFruit.Config == _config && otherFruit.GetInstanceID() < GetInstanceID())
+                
+                // Compare hash to avoid the same collision action being invoked twice.
+                if (otherFruit.Config == _config && otherFruit.GetHashCode() < GetHashCode())
                 {
                     Debug.Log($"{name} collided with {otherFruit.name}.", this);
-                    OnCollidedWithFruit?.Invoke(this, otherFruit);
+                    OnCollidedWithSameFruit?.Invoke(this, otherFruit);
                 }
             }
         }
