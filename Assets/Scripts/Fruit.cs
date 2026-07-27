@@ -47,7 +47,7 @@ namespace CharlieCares.FruitMerge
 
         public void SetConfig(FruitConfig config)
         {
-            name = config.Name + GetInstanceID();
+            name = config.Name + GetHashCode();
             _config = config;
         }
 
@@ -64,9 +64,9 @@ namespace CharlieCares.FruitMerge
             {
                 if (otherFruit.IsUnderPreview)
                     return;
-
-                // Compare ID to avoid the same collision action being invoked twice.
-                if (otherFruit.Config == _config && otherFruit.GetInstanceID() < GetInstanceID())
+                
+                // Compare hash to avoid the same collision action being invoked twice.
+                if (otherFruit.Config == _config && otherFruit.GetHashCode() < GetHashCode())
                 {
                     Debug.Log($"{name} collided with {otherFruit.name}.", this);
                     OnCollidedWithSameFruit?.Invoke(this, otherFruit);

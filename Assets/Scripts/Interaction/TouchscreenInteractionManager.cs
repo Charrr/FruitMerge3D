@@ -23,7 +23,7 @@ namespace CharlieCares.FruitMerge.Interaction
 
         private void Awake()
         {
-            _interactionManager = FindFirstObjectByType<InteractionManager>();
+            _interactionManager = FindAnyObjectByType<InteractionManager>();
         }
 
         private void Update()
